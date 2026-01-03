@@ -1,39 +1,75 @@
 :root {
-  --blue: #2196f3;
-  --dark-blue: #1e88e5;
-  --red: #f44336;
-  --dark-red: #d32f2f;
-  --moon-grey: #f2f2f2;
+  /* Google Drive Primary Colors */
+  --google-blue: #1a73e8;
+  --google-blue-dark: #1967d2;
+  --google-red: #d93025;
+  --google-green: #1e8e3e;
+  --google-yellow: #f9ab00;
+  
+  /* Legacy colors for compatibility */
+  --blue: #1a73e8;
+  --dark-blue: #1967d2;
+  --red: #d93025;
+  --dark-red: #c5221f;
+  --moon-grey: #f8f9fa;
 
-  --icon-red: #da4453;
-  --icon-orange: #f47750;
-  --icon-yellow: #fdbc4b;
-  --icon-green: #2ecc71;
-  --icon-blue: #1d99f3;
-  --icon-violet: #9b59b6;
+  /* Google Drive Icon Colors */
+  --icon-red: #ea4335;
+  --icon-orange: #ff6d01;
+  --icon-yellow: #fbbc04;
+  --icon-green: #34a853;
+  --icon-blue: #4285f4;
+  --icon-violet: #9334e6;
 
   --input-red: rgb(252, 208, 205);
   --input-green: rgb(201, 242, 218);
 
-  --item-selected: white;
+  --item-selected: #e8f0fe;
 
-  --action: rgb(84, 110, 122);
+  --action: #5f6368;
 
-  --background: rgb(250, 250, 250);
-  --surfacePrimary: rgb(255, 255, 255);
-  --surfaceSecondary: rgb(230, 230, 230);
-  --divider: rgba(0, 0, 0, 0.05);
-  --iconPrimary: var(--icon-blue);
-  --iconSecondary: rgb(255, 255, 255);
-  --iconTertiary: rgb(204, 204, 204);
-  --textPrimary: rgb(111, 111, 111);
-  --textSecondary: rgb(51, 51, 51);
-  --hover: rgba(0, 0, 0, 0.1);
-  --borderPrimary: rgba(0, 0, 0, 0.1);
-  --borderSecondary: rgba(0, 0, 0, 0.2);
-  --dividerPrimary: rgba(255, 255, 255, 0.4);
-  --dividerSecondary: rgba(255, 255, 255, 0.9);
+  /* Google Drive Background & Surface Colors */
+  --background: #ffffff;
+  --surfacePrimary: #ffffff;
+  --surfaceSecondary: #f8f9fa;
+  --divider: #dadce0;
+  
+  /* Icon Colors */
+  --iconPrimary: #5f6368;
+  --iconSecondary: #ffffff;
+  --iconTertiary: #dadce0;
+  
+  /* Text Colors */
+  --textPrimary: #5f6368;
+  --textSecondary: #202124;
+  
+  /* Interactive States */
+  --hover: rgba(60, 64, 67, 0.08);
+  
+  /* Borders */
+  --borderPrimary: #dadce0;
+  --borderSecondary: #5f6368;
+  --dividerPrimary: #dadce0;
+  --dividerSecondary: #e8eaed;
+  
+  /* Shadows - Google Material Design */
+  --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  --shadow-md: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  --shadow-lg: 0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  
+  /* Border Radius */
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 12px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 }
+
 
 :root.dark {
   --input-red: rgb(115, 48, 45);

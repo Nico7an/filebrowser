@@ -1,74 +1,209 @@
+/* Google Drive Login Page */
+
 #login {
-  background: var(--surfacePrimary);
+  background: #ffffff;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#login img {
-  width: 4em;
-  height: 4em;
-  margin: 0 auto;
-  display: block;
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 450px;
+  padding: 40px 0;
 }
 
-#login h1 {
+.login-card {
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 48px 40px 36px;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.login-logo {
   text-align: center;
-  font-size: 2.5em;
-  margin: 0.4em 0 0.67em;
+  margin-bottom: 16px;
 }
 
-#login form {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 16em;
-  width: 90%;
+.login-logo img {
+  width: 64px;
+  height: 64px;
 }
 
-#login.recaptcha form {
-  min-width: 304px;
-}
-
-#login #recaptcha {
-  margin: 0.5em 0 0;
-}
-
-#login .wrong {
-  background: var(--red);
-  color: #fff;
-  padding: 0.5em;
+.login-title {
   text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  color: #202124;
+  margin: 0 0 8px 0;
+  line-height: 1.3333;
+}
+
+.login-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: #5f6368;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+}
+
+.message-box {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
   animation: 0.2s opac forwards;
 }
 
-#login .logout-message {
-  background: var(--icon-orange);
-  color: #fff;
-  padding: 0.5em;
-  text-align: center;
-  animation: 0.2s opac forwards;
-  text-transform: none;
+.message-error {
+  background-color: #fce8e6;
+  color: #c5221f;
+  border: 1px solid #f9dedc;
+}
+
+.message-warning {
+  background-color: #fef7e0;
+  color: #945200;
+  border: 1px solid #feefc3;
 }
 
 @keyframes opac {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
 }
 
-#login p {
-  cursor: pointer;
-  text-align: right;
-  color: var(--blue);
-  text-transform: lowercase;
+.login-form {
+  width: 100%;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.google-input {
+  width: 100%;
+  padding: 13px 15px;
+  font-size: 16px;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  background: transparent;
+  color: #202124;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.google-input:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: inset 0 0 0 1px #1a73e8;
+}
+
+.google-input::placeholder {
+  color: #5f6368;
+}
+
+.login-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  gap: 16px;
+}
+
+.text-button {
+  background: transparent;
+  border: none;
+  color: #1a73e8;
+  font-size: 14px;
   font-weight: 500;
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-button:hover {
+  background: rgba(26, 115, 232, 0.04);
+}
+
+.submit-button {
+  background: #1a73e8;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Roboto', sans-serif;
+  min-width: 80px;
+}
+
+.submit-button:hover {
+  background: #1765cc;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+}
+
+.submit-button:active {
+  background: #1557b0;
+}
+
+.login-footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.login-footer span {
+  color: #5f6368;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+.login-footer span:hover {
+  background: rgba(60, 64, 67, 0.08);
+}
+
+/* Recaptcha specific */
+#login.recaptcha .login-card {
+  min-width: 340px;
+}
+
+#recaptcha {
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .login-card {
+    padding: 32px 24px;
+    border: none;
+    box-shadow: none;
+  }
+
+  .login-container {
+    padding: 20px;
+  }
 }

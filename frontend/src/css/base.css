@@ -1,6 +1,6 @@
 body {
   font-family: "Roboto", sans-serif;
-  padding-top: 4em;
+  padding-top: 64px;
   background: var(--background);
   color: var(--textSecondary);
 }
@@ -52,10 +52,16 @@ i.spin {
 }
 
 nav {
-  width: 16em;
+  width: 256px;
   position: fixed;
-  top: 4em;
+  top: 64px;
   left: 0;
+  height: calc(100vh - 64px);
+  background: #ffffff;
+  border-right: 1px solid var(--borderPrimary);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 html[dir="rtl"] nav {
@@ -65,40 +71,48 @@ html[dir="rtl"] nav {
 
 nav .action {
   width: 100%;
-  display: block;
-  border-radius: 0;
-  font-size: 1.1em;
-  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 0 24px 24px 0;
+  font-size: 14px;
+  padding: 8px 24px 8px 20px;
+  margin: 2px 12px 2px 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--textSecondary);
 }
 
 html[dir="rtl"] nav .action {
   text-align: right;
+  border-radius: 24px 0 0 24px;
+  margin: 2px 0 2px 12px;
 }
 
-nav > div {
+nav>div {
   border-top: 1px solid var(--divider);
 }
 
-nav .action > * {
+nav .action>* {
   vertical-align: middle;
 }
 
 main {
   min-height: 1em;
-  margin: 0 1em 1em auto;
-  width: calc(100% - 19em);
+  margin: 0 0 0 256px;
+  width: calc(100% - 256px);
+  padding: 0;
 }
 
 .breadcrumbs {
-  height: 3em;
+  height: auto;
+  min-height: 48px;
   background: var(--background);
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 1px solid var(--borderPrimary);
   position: sticky;
-  z-index: 1000;
-  top: 4em;
+  z-index: 999;
+  top: 64px;
 }
 
 .breadcrumbs span,
@@ -152,13 +166,13 @@ html[dir="rtl"] .breadcrumbs a {
   word-break: break-all;
 }
 
-.vue-number-input > input {
+.vue-number-input>input {
   background: var(--surfacePrimary) !important;
   border-color: var(--surfaceSecondary) !important;
   color: var(--textSecondary) !important;
 }
 
-.vue-number-input--small > input {
+.vue-number-input--small>input {
   height: 1rem !important;
   font-size: 1rem !important;
 }

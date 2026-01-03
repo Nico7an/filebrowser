@@ -1,46 +1,86 @@
 <template>
   <div id="login" :class="{ recaptcha: recaptcha }">
-    <form @submit="submit">
-      <img :src="logoURL" alt="File Browser" />
-      <h1>{{ name }}</h1>
-      <p v-if="reason != null" class="logout-message">
-        {{ t(`login.logout_reasons.${reason}`) }}
-      </p>
-      <div v-if="error !== ''" class="wrong">{{ error }}</div>
+    <div class="login-container">
+      <div class="login-card">
+        <!-- Logo from Branding folder -->
+        <div class="login-logo">
+          <img :src="logoURL" alt="File Browser" />
+        </div>
 
-      <input
-        autofocus
-        class="input input--block"
-        type="text"
-        autocapitalize="off"
-        v-model="username"
-        :placeholder="t('login.username')"
-      />
-      <input
-        class="input input--block"
-        type="password"
-        v-model="password"
-        :placeholder="t('login.password')"
-      />
-      <input
-        class="input input--block"
-        v-if="createMode"
-        type="password"
-        v-model="passwordConfirm"
-        :placeholder="t('login.passwordConfirm')"
-      />
+        <!-- Title -->
+        <h1 class="login-title">{{ createMode ? 'Créer un compte' : 'Connexion' }}</h1>
+        <p class="login-subtitle">{{ createMode ? 'File Browser' : 'Utilisez votre compte File Browser' }}</p>
 
-      <div v-if="recaptcha" id="recaptcha"></div>
-      <input
-        class="button button--block"
-        type="submit"
-        :value="createMode ? t('login.signup') : t('login.submit')"
-      />
+        <!-- Error/Logout Messages -->
+        <div v-if="reason != null" class="message-box message-warning">
+          {{ t(`login.logout_reasons.${reason}`) }}
+        </div>
+        <div v-if="error !== ''" class="message-box message-error">
+          {{ error }}
+        </div>
 
-      <p @click="toggleMode" v-if="signup">
-        {{ createMode ? t("login.loginInstead") : t("login.createAnAccount") }}
-      </p>
-    </form>
+        <!-- Login Form -->
+        <form @submit="submit" class="login-form">
+          <!-- Username Field -->
+          <div class="input-group">
+            <input
+              autofocus
+              class="google-input"
+              type="text"
+              autocapitalize="off"
+              v-model="username"
+              :placeholder="t('login.username')"
+              required
+            />
+          </div>
+
+          <!-- Password Field -->
+          <div class="input-group">
+            <input
+              class="google-input"
+              type="password"
+              v-model="password"
+              :placeholder="t('login.password')"
+              required
+            />
+          </div>
+
+          <!-- Password Confirm (Signup mode) -->
+          <div v-if="createMode" class="input-group">
+            <input
+              class="google-input"
+              type="password"
+              v-model="passwordConfirm"
+              :placeholder="t('login.passwordConfirm')"
+              required
+            />
+          </div>
+
+          <!-- Recaptcha -->
+          <div v-if="recaptcha" id="recaptcha" style="margin-top: 16px;"></div>
+
+          <!-- Action Buttons -->
+          <div class="login-actions">
+            <button 
+              type="button" 
+              class="text-button" 
+              v-if="signup"
+              @click="toggleMode"
+            >
+              {{ createMode ? t("login.loginInstead") : t("login.createAnAccount") }}
+            </button>
+            <button type="submit" class="submit-button">
+              {{ createMode ? t('login.signup') : t('login.submit') }}
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="login-footer">
+        <span>Français (France)</span>
+      </div>
+    </div>
   </div>
 </template>
 

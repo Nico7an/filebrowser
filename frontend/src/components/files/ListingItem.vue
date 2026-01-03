@@ -1,6 +1,6 @@
 <template>
   <div
-    class="item"
+    class="gdrive-card item"
     role="button"
     tabindex="0"
     :draggable="isDraggable"
@@ -21,24 +21,42 @@
     :aria-selected="isSelected"
     :data-ext="getExtension(name).toLowerCase()"
     @contextmenu="contextMenu"
+    :class="{ selected: isSelected }"
   >
-    <div>
+    <!-- Selection Checkbox (visible on hover or when selected) -->
+    <div class="gdrive-card-checkbox">
+      <input 
+        type="checkbox" 
+        :checked="isSelected"
+        @click.stop="click"
+        style="width: 20px; height: 20px; cursor: pointer;"
+      />
+    </div>
+
+    <!-- Three-dot menu (visible on hover) -->
+    <div class="gdrive-card-menu">
+      <i class="material-icons" style="font-size: 20px; cursor: pointer; color: var(--textPrimary)">more_vert</i>
+    </div>
+
+    <!-- File/Folder Icon or Thumbnail -->
+    <div style="display: flex; justify-content: center; margin-bottom: 12px;">
       <img
         v-if="!readOnly && type === 'image' && isThumbsEnabled"
         v-lazy="thumbnailUrl"
+        style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;"
       />
-      <i v-else class="material-icons"></i>
+      <i v-else class="material-icons" :class="getIconClass()" style="font-size: 48px;"></i>
     </div>
 
-    <div>
-      <p class="name">{{ name }}</p>
+    <!-- File/Folder Name -->
+    <div class="gdrive-card-name" :title="name">
+      {{ name }}
+    </div>
 
-      <p v-if="isDir" class="size" data-order="-1">&mdash;</p>
-      <p v-else class="size" :data-order="humanSize()">{{ humanSize() }}</p>
-
-      <p class="modified">
-        <time :datetime="modified">{{ humanTime() }}</time>
-      </p>
+    <!-- File/Folder Details (size and modified date) -->
+    <div class="gdrive-card-details">
+      <span v-if="!isDir">{{ humanSize() }}</span>
+      <span v-if="!readOnly">{{ humanTime() }}</span>
     </div>
   </div>
 </template>
@@ -310,6 +328,48 @@ const click = (event: Event | KeyboardEvent) => {
 
 const open = () => {
   router.push({ path: props.url });
+};
+
+const getIconClass = (): string => {
+  if (props.isDir) {
+    return "gdrive-icon-folder";
+  }
+  
+  const ext = getExtension(props.name).toLowerCase();
+  
+  // PDF files
+  if (ext === ".pdf") return "gdrive-icon-pdf";
+  
+  // Document files
+  if ([".doc", ".docx", ".txt", ".odt"].includes(ext)) return "gdrive-icon-doc";
+  
+  // Spreadsheet files
+  if ([".xls", ".xlsx", ".csv", ".ods"].includes(ext)) return "gdrive-icon-sheet";
+  
+  // Presentation files
+  if ([".ppt", ".pptx", ".odp"].includes(ext)) return "gdrive-icon-slides";
+  
+  // Image files
+  if ([".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp"].includes(ext)) 
+    return "gdrive-icon-image";
+  
+  // Video files
+  if ([".mp4", ".avi", ".mov", ".mkv", ".webm", ".flv"].includes(ext)) 
+    return "gdrive-icon-video";
+  
+  // Audio files
+  if ([".mp3", ".wav", ".ogg", ".flac", ".aac"].includes(ext)) 
+    return "gdrive-icon-audio";
+  
+  // Archive files
+  if ([".zip", ".rar", ".7z", ".tar", ".gz"].includes(ext)) 
+    return "gdrive-icon-archive";
+  
+  // Code files
+  if ([".js", ".ts", ".py", ".java", ".cpp", ".c", ".html", ".css", ".go", ".rs"].includes(ext)) 
+    return "gdrive-icon-code";
+  
+  return "gdrive-icon-default";
 };
 
 const getExtension = (fileName: string): string => {

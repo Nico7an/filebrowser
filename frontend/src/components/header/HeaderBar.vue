@@ -1,21 +1,36 @@
 <template>
   <header>
-    <img v-if="showLogo" :src="logoURL" />
-    <Action
-      v-if="showMenu"
-      class="menu-button"
-      icon="menu"
-      :label="t('buttons.toggleSidebar')"
-      @action="layoutStore.showHover('sidebar')"
-    />
+    <!-- Logo and Menu -->
+    <div style="display: flex; align-items: center; gap: 16px">
+      <Action
+        v-if="showMenu"
+        class="menu-button"
+        icon="menu"
+        :label="t('buttons.toggleSidebar')"
+        @action="layoutStore.showHover('sidebar')"
+      />
+      <div v-if="showLogo" style="display: flex; align-items: center; gap: 8px">
+        <img :src="logoURL" style="height: 40px" />
+        <span style="font-size: 22px; color: #5f6368; font-weight: 400">Drive</span>
+      </div>
+    </div>
 
-    <slot />
+    <!-- Search Bar - Google Drive Style -->
+    <div class="gdrive-search" style="flex: 1; max-width: 720px">
+      <i class="material-icons">search</i>
+      <slot />
+    </div>
 
+    <!-- Right side actions -->
+    <div style="display: flex; align-items: center; gap: 4px">
+      <slot name="actions" />
+    </div>
+
+    <!-- Dropdown for more actions -->
     <div
       id="dropdown"
       :class="{ active: layoutStore.currentPromptName === 'more' }"
     >
-      <slot name="actions" />
     </div>
 
     <Action

@@ -2,10 +2,23 @@
   <div v-show="active" @click="closeHovers" class="overlay"></div>
   <nav :class="{ active }">
     <template v-if="isLoggedIn">
-      <button @click="toAccountSettings" class="action">
-        <i class="material-icons">person</i>
-        <span>{{ user.username }}</span>
+      <!-- Google Drive "+ Nouveau" Button -->
+      <button v-if="user.perm.create" @click="showHover('upload')" class="new-button">
+        <i class="material-icons">add</i>
+        <span>Nouveau</span>
       </button>
+
+      <!-- Google Drive Navigation Items -->
+      <button
+        class="action"
+        @click="toRoot"
+        :aria-label="$t('sidebar.myFiles')"
+        :title="$t('sidebar.myFiles')"
+      >
+        <i class="material-icons">home</i>
+        <span>Accueil</span>
+      </button>
+
       <button
         class="action"
         @click="toRoot"
@@ -13,31 +26,86 @@
         :title="$t('sidebar.myFiles')"
       >
         <i class="material-icons">folder</i>
-        <span>{{ $t("sidebar.myFiles") }}</span>
+        <span>Mon Drive</span>
       </button>
 
-      <div v-if="user.perm.create">
-        <button
-          @click="showHover('newDir')"
-          class="action"
-          :aria-label="$t('sidebar.newFolder')"
-          :title="$t('sidebar.newFolder')"
-        >
-          <i class="material-icons">create_new_folder</i>
-          <span>{{ $t("sidebar.newFolder") }}</span>
-        </button>
+      <button
+        class="action"
+        :aria-label="'Ordinateurs'"
+        :title="'Ordinateurs'"
+      >
+        <i class="material-icons">computer</i>
+        <span>Ordinateurs</span>
+      </button>
 
-        <button
-          @click="showHover('newFile')"
-          class="action"
-          :aria-label="$t('sidebar.newFile')"
-          :title="$t('sidebar.newFile')"
-        >
-          <i class="material-icons">note_add</i>
-          <span>{{ $t("sidebar.newFile") }}</span>
+      <button
+        class="action"
+        :aria-label="'Partagés avec moi'"
+        :title="'Partagés avec moi'"
+      >
+        <i class="material-icons">people</i>
+        <span>Partagés avec moi</span>
+      </button>
+
+      <button
+        class="action"
+        :aria-label="'Récents'"
+        :title="'Récents'"
+      >
+        <i class="material-icons">schedule</i>
+        <span>Récents</span>
+      </button>
+
+      <button
+        class="action"
+        :aria-label="'Suivis'"
+        :title="'Suivis'"
+      >
+        <i class="material-icons">star</i>
+        <span>Suivis</span>
+      </button>
+
+      <!-- Divider -->
+      <div style="height: 1px; background: var(--borderPrimary); margin: 8px 16px"></div>
+
+      <button
+        class="action"
+        :aria-label="'Spam'"
+        :title="'Spam'"
+      >
+        <i class="material-icons">report</i>
+        <span>Spam</span>
+      </button>
+
+      <button
+        class="action"
+        :aria-label="'Corbeille'"
+        :title="'Corbeille'"
+      >
+        <i class="material-icons">delete</i>
+        <span>Corbeille</span>
+      </button>
+
+      <!-- Divider -->
+      <div style="height: 1px; background: var(--borderPrimary); margin: 8px 16px"></div>
+
+      <!-- Storage Bar (Google Drive Style) -->
+      <div v-if="isFiles && !disableUsedPercentage" class="gdrive-storage">
+        <div class="gdrive-storage-bar">
+          <div
+            class="gdrive-storage-bar-fill"
+            :style="{ width: usage.usedPercentage + '%' }"
+          ></div>
+        </div>
+        <div class="gdrive-storage-text">
+          {{ usage.used }} utilisés sur {{ usage.total }}
+        </div>
+        <button class="gdrive-storage-upgrade">
+          Augmenter l'espace de stockage
         </button>
       </div>
 
+      <!-- Settings and Logout -->
       <div v-if="user.perm.admin">
         <button
           class="action"
@@ -49,6 +117,17 @@
           <span>{{ $t("sidebar.settings") }}</span>
         </button>
       </div>
+
+      <button
+        class="action"
+        @click="toAccountSettings"
+        :aria-label="$t('buttons.settings')"
+        :title="$t('buttons.settings')"
+      >
+        <i class="material-icons">person</i>
+        <span>{{ user.username }}</span>
+      </button>
+
       <button
         v-if="canLogout"
         @click="logout"
@@ -85,17 +164,7 @@
       </router-link>
     </template>
 
-    <div
-      class="credits"
-      v-if="isFiles && !disableUsedPercentage"
-      style="width: 90%; margin: 2em 2.5em 3em 2.5em"
-    >
-      <progress-bar :val="usage.usedPercentage" size="small"></progress-bar>
-      <br />
-      {{ usage.used }} of {{ usage.total }} used
-    </div>
-
-    <p class="credits">
+    <p class="credits" style="margin-top: auto; padding: 16px 24px; font-size: 12px; color: var(--textPrimary)">
       <span>
         <span v-if="disableExternal">File Browser</span>
         <a
