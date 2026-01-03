@@ -1,7 +1,7 @@
 /* Google Drive Login Page */
 
 #login {
-  background: #ffffff;
+  background: var(--background);
   position: fixed;
   top: 0;
   left: 0;
@@ -22,8 +22,8 @@
 }
 
 .login-card {
-  background: #ffffff;
-  border: 1px solid #dadce0;
+  background: var(--surfacePrimary);
+  border: 1px solid var(--borderPrimary);
   border-radius: 8px;
   padding: 48px 40px 36px;
   width: 100%;
@@ -44,7 +44,7 @@
   text-align: center;
   font-size: 24px;
   font-weight: 400;
-  color: #202124;
+  color: var(--textSecondary);
   margin: 0 0 8px 0;
   line-height: 1.3333;
 }
@@ -52,7 +52,7 @@
 .login-subtitle {
   text-align: center;
   font-size: 16px;
-  color: #5f6368;
+  color: var(--textPrimary);
   margin: 0 0 24px 0;
   font-weight: 400;
 }
@@ -66,9 +66,9 @@
 }
 
 .message-error {
-  background-color: #fce8e6;
-  color: #c5221f;
-  border: 1px solid #f9dedc;
+  background-color: var(--input-red);
+  color: var(--dark-red);
+  border: 1px solid var(--input-red);
 }
 
 .message-warning {
@@ -99,22 +99,22 @@
   width: 100%;
   padding: 13px 15px;
   font-size: 16px;
-  border: 1px solid #dadce0;
+  border: 1px solid var(--borderPrimary);
   border-radius: 4px;
   background: transparent;
-  color: #202124;
+  color: var(--textSecondary);
   transition: all 0.2s ease;
   font-family: 'Roboto', sans-serif;
 }
 
 .google-input:focus {
   outline: none;
-  border-color: #1a73e8;
-  box-shadow: inset 0 0 0 1px #1a73e8;
+  border-color: var(--google-blue);
+  box-shadow: inset 0 0 0 1px var(--google-blue);
 }
 
 .google-input::placeholder {
-  color: #5f6368;
+  color: var(--textPrimary);
 }
 
 .login-actions {
