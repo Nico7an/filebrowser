@@ -11,7 +11,7 @@
       />
       <div v-if="showLogo" style="display: flex; align-items: center; gap: 8px">
         <img :src="logoURL" style="height: 40px" />
-        <span style="font-size: 22px; color: #5f6368; font-weight: 400">Drive</span>
+        <span style="font-size: 22px; color: var(--textPrimary); font-weight: 400">Drive</span>
       </div>
     </div>
 
