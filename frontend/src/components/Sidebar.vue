@@ -9,16 +9,7 @@
       </button>
 
       <!-- Google Drive Navigation Items -->
-      <button
-        class="action"
-        @click="toRoot"
-        :aria-label="$t('sidebar.myFiles')"
-        :title="$t('sidebar.myFiles')"
-      >
-        <i class="material-icons">home</i>
-        <span>Accueil</span>
-      </button>
-
+      <!-- Google Drive Navigation Items -->
       <button
         class="action"
         @click="toRoot"
@@ -27,63 +18,6 @@
       >
         <i class="material-icons">folder</i>
         <span>Mon Drive</span>
-      </button>
-
-      <button
-        class="action"
-        :aria-label="'Ordinateurs'"
-        :title="'Ordinateurs'"
-      >
-        <i class="material-icons">computer</i>
-        <span>Ordinateurs</span>
-      </button>
-
-      <button
-        class="action"
-        :aria-label="'Partagés avec moi'"
-        :title="'Partagés avec moi'"
-      >
-        <i class="material-icons">people</i>
-        <span>Partagés avec moi</span>
-      </button>
-
-      <button
-        class="action"
-        :aria-label="'Récents'"
-        :title="'Récents'"
-      >
-        <i class="material-icons">schedule</i>
-        <span>Récents</span>
-      </button>
-
-      <button
-        class="action"
-        :aria-label="'Suivis'"
-        :title="'Suivis'"
-      >
-        <i class="material-icons">star</i>
-        <span>Suivis</span>
-      </button>
-
-      <!-- Divider -->
-      <div style="height: 1px; background: var(--borderPrimary); margin: 8px 16px"></div>
-
-      <button
-        class="action"
-        :aria-label="'Spam'"
-        :title="'Spam'"
-      >
-        <i class="material-icons">report</i>
-        <span>Spam</span>
-      </button>
-
-      <button
-        class="action"
-        :aria-label="'Corbeille'"
-        :title="'Corbeille'"
-      >
-        <i class="material-icons">delete</i>
-        <span>Corbeille</span>
       </button>
 
       <!-- Divider -->

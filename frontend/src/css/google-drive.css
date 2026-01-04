@@ -464,3 +464,208 @@
 .gdrive-search input::placeholder {
     color: var(--textPrimary);
 }
+
+/* ============================
+   Helper Classes (from ListingItem)
+   ============================ */
+#listing .gdrive-checkbox-input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#listing .gdrive-menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--textPrimary);
+}
+
+#listing .gdrive-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+#listing .gdrive-thumbnail {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+#listing .item .gdrive-file-icon {
+    font-size: 48px;
+}
+
+/* ============================
+   List View for GDrive Cards
+   ============================ */
+/* When inside #listing.list */
+#listing.list .item {
+    padding: 0;
+    border: none;
+    border-bottom: 1px solid var(--borderPrimary);
+    margin: 0;
+    width: 100%;
+    display: flex;
+    /* Ensure it is flex container */
+    flex-direction: row;
+    align-items: center;
+}
+
+#listing.list .gdrive-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    transition: background 0.2s ease;
+    height: 48px;
+}
+
+#listing.list .gdrive-card:hover {
+    background: var(--hover);
+}
+
+/* Checkbox in List */
+#listing.list .gdrive-card-checkbox {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    margin-right: 12px;
+    opacity: 0;
+}
+
+#listing.list .gdrive-card:hover .gdrive-card-checkbox,
+#listing.list .gdrive-card.selected .gdrive-card-checkbox,
+#listing.list .gdrive-card .gdrive-card-checkbox:hover {
+    opacity: 1;
+}
+
+/* Icon in List */
+#listing.list .gdrive-icon-container {
+    margin-bottom: 0;
+    width: 40px;
+    justify-content: flex-start;
+}
+
+#listing.list .gdrive-thumbnail {
+    width: 24px;
+    height: 24px;
+    border-radius: 2px;
+}
+
+#listing.list .gdrive-file-icon {
+    font-size: 24px;
+}
+
+/* Name in List */
+#listing.list .gdrive-card-name {
+    flex: 1;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    margin-left: 12px;
+}
+
+/* Details in List */
+#listing.list .gdrive-card-details {
+    display: flex;
+    margin-top: 0;
+    width: 200px;
+    justify-content: flex-end;
+    margin-right: 16px;
+}
+
+/* Menu in List */
+#listing.list .gdrive-card-menu {
+    position: relative;
+    top: auto;
+    right: auto;
+    opacity: 0;
+}
+
+#listing.list .gdrive-card:hover .gdrive-card-menu {
+    opacity: 1;
+}
+
+/* Selected state in List */
+#listing.list .gdrive-card.selected {
+    background: var(--item-selected);
+    border-color: var(--borderPrimary);
+    /* Keep border bottom */
+}
+/* ============================
+   List View Header & Alignment
+   ============================ */
+
+/* Header Row */
+#listing.list .item.header {
+    display: flex !important; /* Override generic hide */
+    align-items: center;
+    padding: 0 16px;
+    height: 48px;
+    border-bottom: 1px solid var(--borderPrimary);
+    background: var(--surfacePrimary);
+}
+
+#listing.list .item.header > div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+/* Header Columns */
+#listing.list .item.header .name {
+    flex: 1;
+    margin-left: 52px; /* CheckboxSpace (20) + IconSpace (32) approx */
+    text-align: left;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--textSecondary);
+}
+
+#listing.list .item.header .size,
+#listing.list .item.header .modified {
+    width: 120px;
+    text-align: right;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--textSecondary);
+}
+
+/* Body Columns (Alignment) */
+#listing.list .gdrive-card-details span {
+    width: 120px;
+    text-align: right;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#listing.list .gdrive-card-details {
+    width: 240px; /* 120 + 120 */
+    margin-right: 0; /* Align with header right */
+    gap: 0;
+}
+
+/* ============================
+   Flex Order Fixes for List View
+   ============================ */
+#listing.list .gdrive-card-checkbox { order: 1; }
+#listing.list .gdrive-icon-container { order: 2; width: 40px; margin-right: 0; }
+#listing.list .gdrive-card-name { order: 3; }
+#listing.list .gdrive-card-details { order: 4; }
+#listing.list .gdrive-card-menu { order: 5; margin-left: 8px; }
+
+/* Adjust Header Name alignment */
+#listing.list .item.header .name {
+    margin-left: 84px; /* Checkbox(32) + Icon(40) + NameMargin(12) */
+}

@@ -27,25 +27,25 @@
     <div class="gdrive-card-checkbox">
       <input 
         type="checkbox" 
+        class="gdrive-checkbox-input"
         :checked="isSelected"
         @click.stop="click"
-        style="width: 20px; height: 20px; cursor: pointer;"
       />
     </div>
 
     <!-- Three-dot menu (visible on hover) -->
     <div class="gdrive-card-menu">
-      <i class="material-icons" style="font-size: 20px; cursor: pointer; color: var(--textPrimary)">more_vert</i>
+      <i class="material-icons gdrive-menu-icon">more_vert</i>
     </div>
 
     <!-- File/Folder Icon or Thumbnail -->
-    <div style="display: flex; justify-content: center; margin-bottom: 12px;">
+    <div class="gdrive-icon-container">
       <img
         v-if="!readOnly && type === 'image' && isThumbsEnabled"
         v-lazy="thumbnailUrl"
-        style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px;"
+        class="gdrive-thumbnail"
       />
-      <i v-else class="material-icons" :class="getIconClass()" style="font-size: 48px;"></i>
+      <i v-else class="material-icons gdrive-file-icon" :class="getIconClass()"></i>
     </div>
 
     <!-- File/Folder Name -->

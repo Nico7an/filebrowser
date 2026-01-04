@@ -114,48 +114,8 @@ html[dir="rtl"] #listing {
   display: none;
 }
 
-#listing.mosaic .item div:first-of-type {
-  width: 100%;
-}
+/* Removed conflicting mosaic/gallery styles */
 
-#listing.mosaic .item div:last-of-type {
-  width: 100%;
-}
-
-#listing.mosaic.gallery .item div:first-of-type {
-  width: 100%;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#listing.mosaic.gallery .item div:last-of-type {
-  position: relative;
-  bottom: auto;
-  padding: 0;
-  width: 100%;
-  text-align: left;
-}
-
-#listing.mosaic.gallery .item[data-type="image"] div:last-of-type {
-  color: var(--textSecondary);
-  background: transparent;
-}
-
-#listing.mosaic.gallery .item i {
-  width: auto;
-  margin-right: 0;
-  font-size: 48px;
-  text-align: center;
-}
-
-#listing.mosaic.gallery .item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 4px;
-}
 
 #listing.gallery .size,
 #listing.gallery .modified {
@@ -187,32 +147,8 @@ html[dir="rtl"] #listing {
   border-color: var(--google-blue) !important;
 }
 
-#listing.list .item div:first-of-type {
-  width: 3em;
-}
+/* Removed conflicting list view styles */
 
-#listing.list .item div:first-of-type i {
-  font-size: 2em;
-}
-
-#listing.list .item div:first-of-type img {
-  width: 2em;
-  height: 2em;
-}
-
-#listing.list .item div:last-of-type {
-  width: calc(100% - 3em);
-  display: flex;
-  align-items: center;
-}
-
-#listing.list .item .name {
-  width: 50%;
-}
-
-#listing.list .item .size {
-  width: 25%;
-}
 
 #listing .item.header {
   display: none !important;
