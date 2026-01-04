@@ -118,13 +118,7 @@ html[dir="rtl"] #listing {
   transition: all 0.2s ease;
 }
 
-/* Removed conflicting mosaic/gallery styles */
-
-
-#listing.gallery .size,
-#listing.gallery .modified {
-  display: none;
-}
+/* Removed legacy gallery overrides */
 
 #listing.list {
   flex-direction: column;
