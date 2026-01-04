@@ -85,33 +85,37 @@ html[dir="rtl"] #listing {
 }
 
 #listing.mosaic {
+  /* display: grid; REMOVED: This was breaking the section layout */
+  /* instead, we display normally (block) so H2s generally stack */
+  padding: 16px 24px;
+  margin: 0;
+}
+
+/* Apply Grid to the containers strictly */
+#listing.mosaic>div {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 16px;
-  padding: 16px 24px;
-  margin: 0;
+  width: 100%;
+  /* Ensure full width */
+}
+
+/* Exclude the header div if it exists/is targeted */
+#listing.mosaic .header {
+  display: none !important;
 }
 
 #listing.mosaic .item {
   width: auto;
   margin: 0;
-  padding: 16px;
-  border-radius: var(--border-radius);
+  padding: 12px;
+  border-radius: 12px;
+  /* GDrive radius */
   border: 1px solid var(--borderPrimary);
   background: var(--surfacePrimary);
   flex-direction: column;
   box-shadow: none;
   transition: all 0.2s ease;
-}
-
-#listing.mosaic .item:hover {
-  box-shadow: var(--shadow-md);
-  border-color: var(--borderSecondary);
-  background: var(--surfaceSecondary);
-}
-
-#listing.mosaic .header {
-  display: none;
 }
 
 /* Removed conflicting mosaic/gallery styles */

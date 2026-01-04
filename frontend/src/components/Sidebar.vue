@@ -34,9 +34,6 @@
         <div class="gdrive-storage-text">
           {{ usage.used }} utilisés sur {{ usage.total }}
         </div>
-        <button class="gdrive-storage-upgrade">
-          Augmenter l'espace de stockage
-        </button>
       </div>
 
       <!-- Settings and Logout -->
