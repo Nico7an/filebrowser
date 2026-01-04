@@ -57,7 +57,7 @@ nav {
   top: 64px;
   left: 0;
   height: calc(100vh - 64px);
-  background: #ffffff;
+  background: var(--background);
   border-right: 1px solid var(--borderPrimary);
   overflow-y: auto;
   display: flex;
